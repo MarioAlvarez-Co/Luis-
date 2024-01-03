@@ -2,10 +2,10 @@
 const databaseManager = require('../databaseManager');
 
 class Product {
-  constructor(name, price, cantidad, expirationDate) {
+  constructor(name, price, amount, expirationDate) {
     this.name = name;
     this.price = price;
-    this.cantidad = cantidad;
+    this.amount = amount;
     const currentDate = new Date();
     this.registrationDate = currentDate.toISOString().split('T')[0];
     this.expirationDate = expirationDate;

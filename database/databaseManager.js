@@ -19,7 +19,7 @@ class DatabaseManager {
         price REAL,
         registrationDate TEXT,
         expirationDate TEXT,
-        cantidad INTEGER
+        amount INTEGER
       )
     `;
 
@@ -32,11 +32,11 @@ class DatabaseManager {
 
   saveProduct(product) {
     const query = `
-      INSERT INTO products (name, price, registrationDate, expirationDate, cantidad)
+      INSERT INTO products (name, price, registrationDate, expirationDate, amount)
       VALUES (?, ?, ?, ?, ?)
     `;
 
-    const params = [product.name, product.price, product.registrationDate, product.expirationDate, product.cantidad];
+    const params = [product.name, product.price, product.registrationDate, product.expirationDate, product.amount];
 
     return new Promise((resolve, reject) => {
       this.db.run(query, params, function (err) {
