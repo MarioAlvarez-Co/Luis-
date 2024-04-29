@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo de Ventas</title>
+    <!-- <style>
+      * {
+        border: red 1px solid
+      }
+    </style> -->
+
+  <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body style="font-size:20px; ">
+  <!-- Header con enlaces estilizados como botones y fondo negro -->
+  <header class="bg-dark p-3">
+    <div class="container d-flex justify-content-between align-items-center">
+      <h1 class="text-white font-italic" style="font-style: italic;">Luis1</h1>
+      <nav class="nav text-white">
+        <a class="nav-link btn btn-primary" style="color:white;" href="./Ventas.html">Ventas</a>
+        <a class="nav-link btn btn-primary" style="color:white;" href="../Inventario/Inventario.html">Inventario</a>
+        <a class="nav-link btn btn-primary" style="color:white;" href="../Registros/Registros.html">Registros</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container fade   " id="container">
+    <h1 class="text-center">Ventas</h1>
+
+    <div class="row">
+
+      <div class="col-md-5 shadow card">
+        <h4 class="text-center">Stock</h4>
+        <!-- Barra de búsqueda de productos -->
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Buscar producto" aria-label="Buscar producto"
+            aria-describedby="button-addon2" id="search-bar">
+        </div>
+
+        <!-- Tabla de Productos -->
+        <div class="table-responsive " style="max-height: 500px;">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th class="text-center" scope="col">Precio Unitario</th>
+                <th class="text-center" scope="col">Cantidad Disponible</th>
+                <th class="text-center" scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tabla-productos-ventas" class="table-body-scrollable">
+              <!-- Filas de productos se agregarán aquí -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="card shadow" style="height: 76vh;">
+          <h4 class="text-center">Venta</h4>
+          <div class="card-header">
+            <div class="row">
+              <div class="col-md-2 text-center">Nombre </div>
+              <div class="col-md-3 text-center">Cantidad</div>
+              <div class="col-md-2 text-center">Valor Unitario</div>
+              <div class="col-md-2 text-center">Total</div>
+              <div class="col-md-3 text-center">Acciones</div>
+            </div>
+          </div>
+          <ul class="list-group list-group-flush text-center" style="width: 100%; height: 76vh; overflow-y: auto;"
+            id="carrito-lista">
+            <!-- Item del carrito se agregarán aquí -->
+            <p style="color: grey;">Sin añadir productos</p>
+          </ul>
+          <div class="card-footer text-center">
+            <div class="container h-100">
+              <div class="row align-items-center justify-content-center h-100">
+                <div class="col-md-4 text-center">
+                  <h2>Total:<span></span></h2>
+                  <h2 class="fade" id="discountL">Descuento:</h2>
+                </div>
+                <div class="col-md-4 text-center">
+                  <h2><span id="total">0</span></h2>                  
+                  <h2 class="fade text-danger" id="discount">00</h2>
+                </div>
+                <div class="col-md-4 text-center">
+                  <!-- Botón Añadir Descuento -->
+                  <button type="button" class="btn btn-primary btn-block mt-3" id="btn-anadir-descuento" >Añadir Descuento</button>
+
+                  <button type="button" class="btn btn-success btn-block mt-3" id="btn-realizar-venta">Realizar
+                    Venta</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="aviso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Avisos</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p><strong id="texto-aviso"></strong></p>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Entendido</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- factura -->
+      <div>
+        <div class="modal fade" id="make-sale" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog"  role="document">
+            <div class="modal-content" >
+              <div class="modal-header">
+                <h5 class="modal-title">Factura</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class=" modal-body table-body-scrollable  table-responsive" style="height:60vh; ">
+                <table class="table table-striped table-responsive ">
+                  <thead>
+                    <tr>
+                      <th scope="col">Nombre</th>
+                      <th class="text-center" scope="col">Precio Unitario</th>
+                      <th class="text-center" scope="col">Cantidad</th>
+                      <th class="text-center" scope="col">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-body-scrollable" id="bill-body">                      
+                  </tbody>
+                </table>
+              </div>
+              <div class="card-footer text-center border-top">
+                <div class="d-flex justify-content-around align-items-center  row">
+                  <div class="col-md-4">
+                    <h4>Protductos:<span ></span></h4>
+                    <h4>subTotal:<span ></span></h4>
+                    
+                    <h4 >Descuento:<span ></span></h4>
+                    <h4>Total:<span ></span></h4> 
+                  </div>
+                  <div class="col-md-3 text-center">
+                    <h3><span id="amount-bill"></span></h3>
+                    <h3><span id="subtotal-bill"></span></h3>
+                    <h3 >$<span id="discount-bill" style="color:red;">10</span></h3>
+                    <h3>$<span id="total-bill">000</span></h3>
+                  </div>
+                  <div class="col-md-5 d-flex justify-content-center align-items-center">
+                    <button type="button" id="sale" class="btn btn-success"
+                      data-bs-dismiss="modal">Realizar Venta</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="modalDescuento" tabindex="-1" aria-labelledby="modalDescuentoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalDescuentoLabel">Añadir Descuento</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <!-- Campo de entrada para el descuento -->
+              <label for="descuentoInput" class="form-label">Descuento:</label>
+              <input type="number" class="form-control" id="descuentoInput" placeholder="Ingrese el descuento">
+            </div>
+            <div class="modal-footer">
+              <!-- Botón para aplicar el descuento -->
+              <button type="button" class="btn btn-success"  data-bs-dismiss="modal" id="btn-aplicar-descuento">Aplicar Descuento</button>
+              <!-- Botón para cerrar la modal -->
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./renderer.js"></script>
+</body>
+
+</html>

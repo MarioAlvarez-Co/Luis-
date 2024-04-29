@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,163 +8,169 @@
 
   <link rel="stylesheet" href="../../node_modules//bootstrap/dist/css/bootstrap.min.css">
 </head>
-<body>
- <!-- Header con enlaces estilizados como botones y fondo negro -->
- <header class="bg-dark p-3">
-  <div class="container d-flex justify-content-between align-items-center">
-    <h1 class="text-white font-italic" style="font-style: italic;"> Luis1</h1>
-    <nav class="nav text-white">
-      <a class="nav-link btn btn-primary " style="color:white;" href="#">Ventas</a>
-      <a class="nav-link btn btn-primary" style="color:white;" href="#">Inventario</a>
-      <a class="nav-link btn btn-primary" style="color:white;" href="#">Registros</a>
-    </nav>
-  </div>
-</header>
-   
-  <div class="container mt-4">
-    <h2 class="text-center">Inventario</h2>
 
+<body style="font-size:20px;">
+  <!-- Header con enlaces estilizados como botones y fondo negro -->
+  <header class="bg-dark p-3">
+    <div class="container d-flex justify-content-between align-items-center">
+      <h1 class="text-white font-italic" style="font-style: italic;"> Luis1</h1>
+      <nav class="nav text-white">
+        <a class="nav-link btn btn-primary " style="color:white;" href="../Ventas/Ventas.html">Ventas</a>
+        <a class="nav-link btn btn-primary" style="color:white;" href="./Inventario.html">Inventario</a>
+        <a class="nav-link btn btn-primary" style="color:white;" href="../Registros/Registros.html ">Registros</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container mt-4">
+    <h1 class="text-center">Inventario</h1>
 
     <!-- Barra de búsqueda -->
     <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Buscar producto" aria-label="Buscar producto" aria-describedby="button-addon2">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Buscar</button>
-      </div>
+      <input type="text" class="form-control" placeholder="Buscar producto" aria-label="Buscar producto"
+        aria-describedby="button-addon2" id="search-bar">
+
     </div>
 
     <!-- Botón para añadir nuevo producto -->
     <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#nuevoProductoModal">
       Añadir Nuevo Producto
     </button>
-
     <!-- Tabla de Inventario -->
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Nombre</th>
-          <th scope="col">Precio Unitario</th>
-          <th scope="col">Cantidad</th>
-          <th scope="col">Última Fecha de Ingreso</th>
-          <th scope="col">Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Producto 1</td>
-          <td>$10.00</td>
-          <td>50</td>
-          <td>2023-01-01</td>
-          <td>
-            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarProductoModal">
-              Editar
-            </button>
-            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarProductoModal" data-nombre-producto="Producto 1">
-              Eliminar
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td>Producto 2</td>
-          <td>$20.00</td>
-          <td>30</td>
-          <td>2023-01-05</td>
-          <td>
-            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarProductoModal">
-              Editar
-            </button>
-            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarProductoModal" data-nombre-producto="Producto 2">
-              Eliminar
-            </button>
-          </td>
-        </tr>
-        <!-- Puedes agregar más filas según tus necesidades -->
-      </tbody>
-    </table>
+    <div class="table-body-scrollable  table-responsive text-center " style="height:64vh ;">
 
-    <!-- Modal para editar productos -->
-    <div class="modal fade" id="editarProductoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Editar Producto</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <!-- Aquí puedes colocar un formulario para editar productos -->
-            <form>
-              <div class="form-group">
-                <label for="nombreProducto">Nombre</label>
-                <input type="text" class="form-control" id="nombreProducto" required>
-              </div>
-              <div class="form-group">
-                <label for="precioProducto">Precio Unitario</label>
-                <input type="number" class="form-control" id="precioProducto" required>
-              </div>
-              <div class="form-group">
-                <label for="agregarCantidad">Agregar Cantidad</label>
-                <input type="number" class="form-control" id="agregarCantidad" required>
-              </div>
-              <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-            </form>
+      <table class="table table-striped  ">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Precio Unitario</th>
+            <th scope="col">Precio Coste</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Fecha de Vencimiento</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody class="fade ">
+          <!-- Ejemplo de cómo sería una fila de la tabla -->
+
+        </tbody>
+      </table>
+      <!-- Modal para editar productos -->
+      <div class="modal fade" id="editarProductoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Editar Producto</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form id="formEditarProducto" class="row g-3">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="nombreProducto">Nombre</label>
+                    <input type="text" class="form-control" id="nombreProducto" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="agregarCantidad">Agregar Cantidad</label>
+                    <input type="number" class="form-control" id="agregarCantidad" required min="0">
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="sinFechaVencimientoEditar">
+                      <label class="form-check-label" for="sinFechaVencimientoEditar">No tiene fecha de caducidad</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="precioProducto">Precio Unitario</label>
+                    <input type="number" class="form-control" id="precioProducto" required min="0">
+                  </div>
+                  <div class="form-group">
+                    <label for="precioCoste">Precio Costo</label>
+                    <input type="number" class="form-control" id="precioCoste" required min="0">
+                  </div>
+                  <div class="form-group">
+                    <label for="fechaVencimientoEditarProducto">Fecha de Vencimiento</label>
+                    <input type="date" class="form-control" id="fechaVencimientoEditarProducto">
+                  </div>
+                </div>
+                <div class="col-12">
+                  <button type="submit" id="btnGuardarCambios" class="btn btn-primary">Guardar Cambios</button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Modal para eliminar productos -->
-    <div class="modal fade" id="eliminarProductoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" >Eliminar Producto</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <p>¿Estás seguro de eliminar el producto <strong id="nombreProductoEliminar"></strong>?</p>
-            <button type="button" class="btn btn-danger" onclick="eliminarProductoConfirmado()">Eliminar</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+      <!-- Modal para eliminar productos -->
+      <div class="modal fade" id="eliminarProductoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Eliminar Producto</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>¿Estás seguro de eliminar el producto <strong id="nombreProductoEliminar"></strong>?</p>
+              <button id="btn-delete" type="button" class="btn btn-danger btn-delete">Eliminar</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- Modal para nuevo producto -->
-    <div class="modal fade" id="nuevoProductoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" >Añadir Nuevo Producto</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <!-- Formulario para añadir nuevo producto -->
-            <form id="formNuevoProducto">
-              <div class="form-group">
-                <label for="nombreNuevoProducto">Nombre</label>
-                <input type="text" class="form-control" id="nombreNuevoProducto" required>
-              </div>
-              <div class="form-group">
-                <label for="precioNuevoProducto">Precio Unitario</label>
-                <input type="number" class="form-control" id="precioNuevoProducto" required>
-              </div>
-              <div class="form-group">
-                <label for="cantidadNuevoProducto">Cantidad</label>
-                <input type="number" class="form-control" id="cantidadNuevoProducto" required>
-              </div>
-              <div class="form-group">
-                <label for="fechaVencimientoNuevoProducto">Fecha de Vencimiento</label>
-                <input type="date" class="form-control" id="fechaVencimientoNuevoProducto" required>
-              </div>
-              <button type="submit" class="btn btn-primary" id="btnAgregarProducto">Añadir Producto</button>
-            </form>
+      <!-- Modal para añadir productos -->
+      <div class="modal fade" id="nuevoProductoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Añadir Nuevo Producto</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form id="formNuevoProducto" class="row g-3">
+                <div class="col-md-6">
+                  <label for="nombreNuevoProducto" class="form-label">Nombre</label>
+                  <input type="text" class="form-control" id="nombreNuevoProducto" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="precioCosteNuevoProducto" class="form-label">Precio De Coste</label>
+                  <input type="number" class="form-control" id="precioCosteNuevoProducto" required min="0">
+                </div>
+                <div class="col-md-6">
+                  <label for="cantidadNuevoProducto" class="form-label">Cantidad</label>
+                  <input type="number" class="form-control" id="cantidadNuevoProducto" required min="0">
+                </div>
+                <div class="col-md-6">
+                  <label for="precioNuevoProducto" class="form-label">Precio Unitario</label>
+                  <input type="number" class="form-control" id="precioNuevoProducto" required min="0">
+                </div>
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="sinFechaVencimiento">
+                    <label class="form-check-label" for="sinFechaVencimiento">No tiene fecha de caducidad</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="fechaVencimientoNuevoProducto" class="form-label">Fecha de Vencimiento</label>
+                  <input type="date" class="form-control" id="fechaVencimientoNuevoProducto" required>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary">Añadir Producto</button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <button id="saludar-btn"> saludar</button>
+
   <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./rendererl.js"></script>
 </body>
+
 </html>

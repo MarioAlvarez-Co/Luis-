@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Ventas</title>  
+  <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body style="font-size:20px;">
+  <!-- Header con enlaces estilizados como botones y fondo negro -->
+  <header class="bg-dark p-3">
+    <div class="container d-flex justify-content-between align-items-center">
+      <h1 class="text-white font-italic" style="font-style: italic;">Luis1</h1>
+      <nav class="nav text-white">
+        <a class="nav-link btn btn-primary" style="color:white;" href="../Ventas/Ventas.html">Ventas</a>
+        <a class="nav-link btn btn-primary" style="color:white;" href="../Inventario/Inventario.html">Inventario</a>
+        <a class="nav-link btn btn-primary" style="color:white;" href="./Registros.html">Registros</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container mt-4">
+    <h1 class="text-center">Registro de Ventas</h1>  
+    <div class="d-flex justify-content-end
+    " >
+      <button type="button" id="producidoDia-btn" class="btn btn-success mx-3 my-3" data-bs-toggle="modal" data-bs-target="#producidoDiaModal">
+        Producido del Día
+      </button>  
+    </div>
+    <div class="table-responsive text-center" style="height:64vh;">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ID Venta</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Total Venta</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-registro-ventas" >          
+          
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Detalles de Venta -->
+    <div class="modal fade" id="detallesVentaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Detalles de Venta</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <!-- Información de la venta y productos -->
+            <h4>Información de la Venta</h4>
+            <p>ID Venta: <span id="detalle-id-venta"></span></p>
+            <p>Fecha: <span id="detalle-fecha-venta"></span></p>
+            <p>Total Venta: <span id="detalle-total-venta"></span></p>
+            
+            
+            <h4>Productos</h4>
+            <div class="table-responsive">
+              <table class="table table-striped text-center">
+                <thead>
+                  <tr>
+                    <th scope="col">ID Producto</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio Unitario</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Total</th>
+                  </tr>
+                </thead> 
+                <tbody id="detalle-productos-venta">                  
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="producidoDiaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Producido del Día</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <!-- Contenido de la modal, como el total de ventas del día -->
+            <p>Total Ventas del Día: <span id="totalVentasDia"></span></p>
+            <!-- Puedes agregar más información si es necesario -->
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+  </div>
+
+  <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./renderer.js">  </script>
+
+</body>
+
+</html>

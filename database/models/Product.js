@@ -2,18 +2,19 @@
 const databaseManager = require('../databaseManager');
 
 class Product {
-  constructor(name, price, amount, expirationDate) {
+  constructor(name, price,cost, amount, expirationDate) {
     this.name = name;
     this.price = price;
+    this.cost=cost;
     this.amount = amount;
     const currentDate = new Date();
-    this.registrationDate = currentDate.toISOString().split('T')[0];
+    this.registrationDate = currentDate.toLocaleString();
     this.expirationDate = expirationDate;
   }
 
   static async createTable() {
     try {
-      await databaseManager.createTable();
+      await databaseManager.createTables();
     } catch (error) {
       console.error('Error creating table:', error.message);
     }
@@ -35,15 +36,26 @@ class Product {
       console.error('Error fetching all products:', error.message);
     }
   }
-
   static async findById(id) {
     try {
-      return await databaseManager.findProductById(id);
+      const productData = await databaseManager.findProductById(id);
+      if (productData) {
+        // Crear una instancia de Product con los datos recuperados
+        return new Product(
+          productData.name,
+          productData.price,
+          productData.cost,
+          productData.amount,
+          productData.expirationDate
+        );
+      } else {
+        return null;
+      }
     } catch (error) {
       console.error('Error finding product by ID:', error.message);
+      throw error;
     }
-  }
-
+  }   
   async update() {
     try {
       await databaseManager.updateProduct(this);
@@ -51,14 +63,19 @@ class Product {
       console.error('Error updating product:', error.message);
     }
   }
-
-  async remove() {
+  async delete(id) {
+    
     try {
-      await databaseManager.removeProduct(this);
+      if (id) {
+       
+        await databaseManager.deleteProductById(id);
+        console.log('Producto eliminado exitosamente.');
+      } else {
+        console.error('El producto no tiene un ID asignado. No se puede eliminar.');
+      }
     } catch (error) {
-      console.error('Error removing product:', error.message);
+      console.error('Error eliminando producto:', error.message);
     }
   }
 }
-
 module.exports = Product;
